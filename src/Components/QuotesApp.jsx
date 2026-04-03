@@ -1,12 +1,19 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const QuotesApp = () => {
   const [quote, setQuote] = useState({
     text: 'Ask not what your country can do for you; ask what you can do for your country',
     author: 'John Kennedy',
   })
-  const [favorites, setFavorites] = useState([])
+  const [favorites, setFavorites] = useState(() => {
+    const saved = localStorage.getItem('quotes')
+    return saved ? JSON.parse(saved) : []
+  })
   const [showFavorites, setShowFavorites] = useState(false)
+
+  useEffect(() => {
+    localStorage.setItem('quotes', JSON.stringify(favorites))
+  }, [favorites])
 
   const fetchNewQuote = async () => {
     try {

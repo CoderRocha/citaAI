@@ -9,13 +9,18 @@ const QuotesApp = () => {
   const [showFavorites, setShowFavorites] = useState(false)
 
   const fetchNewQuote = async () => {
-    const url = 'https://api.quotable.io/random'
-    const response = await fetch(url)
-    const data = await response.json()
-    setQuote({
-      text: data.content,
-      author: data.author,
-    })
+    try {
+      const response = await fetch('/api/zenquotes/random')
+      const data = await response.json()
+      if (data[0]?.q) {
+        setQuote({
+          text: data[0].q,
+          author: data[0].a,
+        })
+      }
+    } catch (error) {
+      console.error('Erro ao buscar citação:', error)
+    }
   }
 
   const toggleFavorites = () => {

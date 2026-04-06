@@ -1,16 +1,89 @@
-# React + Vite
+## CitaAI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+O CitaAI é um gerador de citações aleatórias, onde o usuário pode buscar novas citações, salvá-las como favoritas e gerenciá-las pela lista de favoritos.
 
-Currently, two official plugins are available:
+## Índice
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- [Sobre o Projeto](#sobre-o-projeto)
+- [Funcionalidades](#funcionalidades)
+- [Stack](#stack)
+- [Estrutura do Projeto](#estrutura-do-projeto)
+- [Instalação](#instalação)
+- [Executando o Projeto](#executando-o-projeto)
+- [Configurações](#configurações)
+- [Autor](#autor)
 
-## React Compiler
+## Sobre o Projeto
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+O **CitaAI** é um sistema web de citações aleatórias em tempo real. A cada clique em "New Quote", uma nova frase é buscada via API ZenQuotes e exibida na tela. O usuário pode favoritar citações, visualizar sua lista de favoritos e remover itens individualmente. Os favoritos são salvos no `localStorage`.
 
-## Expanding the ESLint configuration
+## Funcionalidades
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Citações aleatórias**
+  - Busca de citação via API ZenQuotes ao clicar em "New Quote".
+
+- **Favoritos**
+  - Adição da citação atual à lista de favoritos.
+  - Validação para evitar duplicatas.
+  - Exibição do painel de favoritos ao clicar no ícone de coração.
+  - Remoção individual de favoritos.
+
+## Stack
+
+- **Frontend**
+  - **React**
+  - **Vite**
+
+## Estrutura do Projeto
+
+- **`src/`**
+  - **`App.jsx`**
+  - **`main.jsx`**
+  - **`index.css`**
+  - **`Components/QuotesApp.jsx`**
+  - **`Components/QuotesApp.css`**
+
+## Instalação
+
+Pré-requisitos:
+
+- **Node.js**
+
+1. **Instalar as dependências**
+
+   ```bash
+   npm install
+   ```
+
+2. **Criar o arquivo `.env` a partir do exemplo**
+
+   ```bash
+   cp .env.example .env
+   ```
+
+3. **Configurar a variável de ambiente no `.env`**
+
+   - `ZENQUOTES_API_URL`
+
+## Executando o Projeto
+
+```bash
+npm run dev
+```
+
+Após rodar o comando, acesse a aplicação em `http://localhost:5173`.
+
+## Configurações
+
+As variáveis de ambiente estão em `.env.example`:
+
+O Vite utiliza essa variável para configurar um proxy reverso em `/api/zenquotes`, redirecionando as requisições para a API externa e evitando erros de CORS.
+
+## Autor
+
+**Guilherme Rocha (CoderRocha)**
+
+- GitHub: [CoderRocha](https://github.com/coderrocha)
+- LinkedIn: [Guilherme Rocha](https://www.linkedin.com/in/guilherme-rocha-da-silva)
+
+---
